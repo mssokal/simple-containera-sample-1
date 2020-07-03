@@ -12,6 +12,7 @@ The sample one uses the following files:
 ### How to use this example
 
 The first step is making sure you have clone the repository. On a terminate, execute the command below:
-	$ git clone https://github.com/mssokal/simple-containera-sample-1.git
-
+```
+$ git clone https://github.com/mssokal/simple-containera-sample-1.git
+```
 
