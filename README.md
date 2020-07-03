@@ -19,8 +19,9 @@ The sample one uses the following files:
 
 ### How to use this example
 
-(1)
+**(1)** Make sure your current directory is "simple-containera-sample-1"
 
+**(2)** Have a look into the file "Dockerfile.1" before you build the container to see the declarations used understand what is happening. Use the [Dockerfile reference documentation](https://docs.docker.com/engine/reference/builder/) to know more about each declaration.
 
 ```
 $ docker build --tag ecs-nht-apache-sample-1:latest --file Dockerfile.1 .
@@ -46,3 +47,14 @@ Successfully tagged ecs-nht-apache-sample-1:latest
 $
 ```
 
+**(3)** To check the image that has been built, you can use one or more of the command below:
+```
+$ docker image ls
+...
+$
+$ docker image ls ecs-nht-apache-*
+...
+$
+$ docker inspect ecs-nht-apache-sample-1
+...
+```
