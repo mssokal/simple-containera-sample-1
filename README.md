@@ -25,36 +25,73 @@ The sample one uses the following files:
 
 ```
 $ docker build --tag ecs-nht-apache-sample-1:latest --file Dockerfile.1 .
-Sending build context to Docker daemon  79.87kB
-Step 1/3 : FROM httpd:latest
-latest: Pulling from library/httpd
-8559a31e96f4: Pull complete 
-bd517d441028: Pull complete 
-f67007e59c3c: Pull complete 
-83c578481926: Pull complete 
-f3cbcb88690d: Pull complete 
-Digest: sha256:387f896f9b6867c7fa543f7d1a686b0ebe777ed13f6f11efc8b94bec743a1e51
-Status: Downloaded newer image for httpd:latest
- ---> ccbcea8a6757
-Step 2/3 : WORKDIR /usr/local/apache2/htdocs
- ---> Running in 426c5be0f61f
-Removing intermediate container 426c5be0f61f
- ---> d3dda9983d0e
-Step 3/3 : COPY ./src/sample1/index.html.1 index.html
- ---> caa99d084476
-Successfully built caa99d084476
-Successfully tagged ecs-nht-apache-sample-1:latest
-$
 ```
 
 **(3)** To check the image that has been built, you can use one or more of the command below:
 ```
 $ docker image ls
 ...
-$
 $ docker image ls ecs-nht-apache-*
 ...
-$
 $ docker inspect ecs-nht-apache-sample-1
 ...
 ```
+
+**(4)** Running a container from the image
+Interactive mode
+```
+$ docker run --interactive --tty -p 8080:80 ecs-nht-apache-sample-1
+```
+
+Detached mode:
+```
+$ docker run --detach -p 8080:80 ecs-nht-apache-sample-1
+```
+
+
+## Sample 2
+
+The sample one uses the following files:
+- Dockerfile.2
+- src/sample2/dash-brain-viewer.tar.gz
+
+
+### How to use this example
+
+**(1)** Make sure your current directory is "simple-containera-sample-1"
+
+**(2)** Have a look into the file "Dockerfile.2" before you build the container to see the declarations used understand what is happening. Use the [Dockerfile reference documentation](https://docs.docker.com/engine/reference/builder/) to know more about each declaration.
+
+```
+$ docker build --tag ecs-nht-brain-sample-2:latest --file Dockerfile.2 .
+```      
+
+NOTE: Please observe the message in the end for the build as indicated below:
+```
+Successfully built d73b33566876
+Successfully tagged ecs-nht-brain-sample-2:latest
+```
+          
+**(3)** To check the image that has been built, you can use one or more of the command below:
+```     
+$ docker image ls
+...          
+$ docker image ls ecs-nht-brain-*
+... 
+$ docker inspect ecs-nht-brain-sample-2
+...
+```
+
+
+
+**(4)** Running a container from the image
+Interactive mode
+```
+$ docker run --interactive --tty -p 8080:8050 <image_id>
+```
+
+Detached mode:
+```
+$ docker run --detach -p 8080:8050 <image_id>
+```
+

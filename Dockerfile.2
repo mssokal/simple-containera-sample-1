@@ -1,0 +1,9 @@
+FROM python:3.6
+
+ADD ./src/sample2/dash-brain-viewer.tar.gz .
+
+RUN pip install -r requirements.txt
+
+EXPOSE 8050
+
+CMD ["python", "app.py"]
